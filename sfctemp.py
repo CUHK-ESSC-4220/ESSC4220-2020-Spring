@@ -55,6 +55,12 @@ new_data1.to_netcdf("zeros_test.nc")
 new_data2 = xr.open_dataset("zeros_test.nc")
 print(new_data2["zeros"])
 
+# Write netCDF : from scratch with assigned lat/lon (copy from old file)
+lat_c = data.coords["lat"]
+lon_c = data.coords["lon"]
+new_data3 = xr.Dataset(data_vars={"temp": (["lat", "lon"], np.zeros([len(lat_c), len(lon_c)]))}, coords={"lat":lat_c, "lon":lon_c})
+new_data3.to_netcdf("zeros_copy_existing_latlon.nc")
+
 print("finish 999")
 
 
