@@ -63,6 +63,14 @@ new_data3.to_netcdf("zeros_copy_existing_latlon.nc")
 new_data4 = xr.open_dataset("zeros_copy_existing_latlon.nc")
 print(new_data4["temp"])
 
+# Write netCDF : Copy Attributes of variable tempsfc
+new_data5 = xr.Dataset()
+print(new_data5)
+new_data5.attrs = data.attrs
+new_data5["tempsfc"] = data["tempsfc"]
+print(new_data5)
+
+
 print("finish 999")
 
 
