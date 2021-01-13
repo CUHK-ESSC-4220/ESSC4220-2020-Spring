@@ -43,4 +43,15 @@ for date in date_list:
     print(date.strftime("%Y-%m-%d %H:%M:%S"))
 print(data.loc[{"time":date_list}])
 
+# subscript and output to a new file
+data_trimmed = data["tempsfc"][{"time":range(2,6), "lat":3, "lon":range(4,9,2)}]
+data_trimmed.to_netcdf("sfctemp_trimmed.nc")
+new_data = xr.open_dataset("sfctemp_trimmed.nc")
+print(new_data["tempsfc"])
+
+print("finish 999")
+
+
+
+
 
