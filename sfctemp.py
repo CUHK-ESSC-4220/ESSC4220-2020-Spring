@@ -34,3 +34,11 @@ required_lon = lon_c[np.logical_and(40.0 <= lon_c, lon_c <= 50.0)] # [40.0 42.5 
 required_lat = lat_c[lat_c <= 10.0] # [10.0 7.5 5.0 2.5 0.0 ... -82.5 -85.0 -87.5 -90.0]
 print(data["tempsfc"].loc[{"time":"2017-01-01T12:00:00", "lat":required_lat, "lon":required_lon}])
 
+# extract values (certain time)
+start_date = pd.datetime(year=2017, month=1, day=11)
+end_date = pd.datetime(year=2017, month=2, day=22)
+date_list = pd.date_range(start=start_date, end=end_date, freq="12H")
+print(data.loc[{"time":date_list}])
+
+
+
