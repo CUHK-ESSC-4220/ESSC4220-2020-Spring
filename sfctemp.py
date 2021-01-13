@@ -1,4 +1,5 @@
 import xarray as xr
+import numpy as np
   
 # open file
 data = xr.open_dataset("sfctemp.nc")
