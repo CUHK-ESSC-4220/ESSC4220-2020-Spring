@@ -43,13 +43,13 @@ for date in date_list:
     print(date.strftime("%Y-%m-%d %H:%M:%S"))
 print(data.loc[{"time":date_list}])
 
-# Create netCDF : subscript of an old file
+# Write netCDF : subscript of an old file
 data_trimmed = data["tempsfc"][{"time":range(2,6), "lat":3, "lon":range(4,9,2)}]
 data_trimmed.to_netcdf("sfctemp_trimmed.nc")
 new_data = xr.open_dataset("sfctemp_trimmed.nc")
 print(new_data["tempsfc"])
 
-# Create netCDF : from scratch
+# Write netCDF : from scratch
 new_data1 = xr.Dataset(data_vars={"zeros": (["lat", "lon"], np.zeros([10,10]))}, coords={"lat": range(10), "lon": range(10)})
 new_data1.to_netcdf("zeros_test.nc")
 new_data2 = xr.open_dataset("zeros_test.nc")
